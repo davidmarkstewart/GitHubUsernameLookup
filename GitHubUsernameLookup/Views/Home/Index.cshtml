@@ -1,0 +1,26 @@
+﻿@model GitHubUsernameLookup.Models.GitHubViewModel
+<div class="row">
+    <div class="col-lg-4">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            <label>GitHub Username: </label>
+            @Html.TextBoxFor(model => model.User.Username)
+            <button>Submit</button>
+        }
+
+        @Html.LabelFor(model => model.User.Username)
+        @Html.DisplayFor(model => model.User.Username)
+
+        @Html.LabelFor(model => model.User.Location)
+        @Html.DisplayFor(model => model.User.Location)
+
+        <img src="@Model.User.Avatar" alt="@Model.User.Username" />
+
+        <ul>
+            @foreach(var repository in Model.Repositories)
+            {
+                <li>@repository.Name</li>
+            }
+        </ul>
+    </div>
+</div>
