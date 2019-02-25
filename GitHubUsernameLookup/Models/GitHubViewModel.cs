@@ -9,6 +9,7 @@ namespace GitHubUsernameLookup.Models
     {
         public GitHubViewModel()
         {
+            User = new GitHubUserDetailsViewModel();
             Repositories = new List<GitHubRepositoryViewModel>();
         }
 

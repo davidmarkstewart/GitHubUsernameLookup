@@ -1,25 +1,32 @@
 ﻿@model GitHubUsernameLookup.Models.GitHubViewModel
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-12" style="margin: 20px 0">
         @using (Html.BeginForm("Index", "Home", FormMethod.Post))
         {
             <label>GitHub Username: </label>
             @Html.TextBoxFor(model => model.User.Username)
             <button>Submit</button>
         }
-
-        @Html.LabelFor(model => model.User.Username)
-        @Html.DisplayFor(model => model.User.Username)
-
-        @Html.LabelFor(model => model.User.Location)
-        @Html.DisplayFor(model => model.User.Location)
-
-        <img src="@Model.User.Avatar" alt="@Model.User.Username" />
-
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        <img src="@Model.User.Avatar" alt="@Model.User.Username" width="200" />
+    </div>
+    <div class="col-lg-4">
+        <div>
+            @Html.LabelFor(model => model.User.Username) :
+            @Html.DisplayFor(model => model.User.Username)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.User.Location) :
+            @Html.DisplayFor(model => model.User.Location)
+        </div>
+        <h3>Top 5 Repositories</h3>
         <ul>
-            @foreach(var repository in Model.Repositories)
+            @foreach (var repository in Model.Repositories)
             {
-                <li>@repository.Name</li>
+                <li><strong>@repository.Name</strong> - (@repository.StarGazerCount Star Gazer Count)</li>
             }
         </ul>
     </div>
